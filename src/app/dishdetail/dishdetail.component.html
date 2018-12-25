@@ -37,13 +37,9 @@
                         <mat-list>
                             <div>{{ commentItem.comment }}</div>
                             <div>
-                                <div class="star" *ngIf="commentItem.rating >= 1"></div>
-                                <div class="star" *ngIf="commentItem.rating >= 2"></div>
-                                <div class="star" *ngIf="commentItem.rating >= 3"></div>
-                                <div class="star" *ngIf="commentItem.rating >= 4"></div>
-                                <div class="star" *ngIf="commentItem.rating >= 5"></div>
+                                <div class="star" *ngFor="let item of (commentItem.rating | numberToArray )"></div>
                             </div>
-                            <div>-- {{ commentItem.author }} on {{ commentItem.date | date }}</div>
+                            <div>-- {{ commentItem.author }} on {{ commentItem.date | date:'EEEE, dd MMMM yyyy' }}</div>
                         </mat-list>
                     </mat-list-item>
                 </mat-list>
