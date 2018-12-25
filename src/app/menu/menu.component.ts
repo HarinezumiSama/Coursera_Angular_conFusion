@@ -1,15 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Dish } from '../shared/Dish';
 
-@Component(
-    {
-        selector: 'app-menu',
-        templateUrl: './menu.component.html',
-        styleUrls: ['./menu.component.scss']
-    })
-export class MenuComponent implements OnInit
-{
-    public dishes: Dish[] =
+const DISHES: Dish[] =
     [
         {
             id: '0',
@@ -56,6 +48,18 @@ export class MenuComponent implements OnInit
                 'A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms'
         }
     ];
+
+@Component(
+    {
+        selector: 'app-menu',
+        templateUrl: './menu.component.html',
+        styleUrls: ['./menu.component.scss']
+    })
+export class MenuComponent implements OnInit
+{
+    public dishes = DISHES;
+
+    public selectedDish: Dish = DISHES[0];
 
     public ngOnInit()
     {
