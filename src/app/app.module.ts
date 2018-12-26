@@ -14,7 +14,9 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';;
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
 
-import { NumberToArrayPipe } from './number-to-array.pipe';
+import { NumberToArrayPipe } from './pipes/number-to-array.pipe';
+
+import { DishService } from './services/dish.service';
 
 @NgModule(
     {
@@ -36,8 +38,14 @@ import { NumberToArrayPipe } from './number-to-array.pipe';
             MatCardModule,
             MatButtonModule
         ],
-        providers: [],
-        bootstrap: [AppComponent]
+        providers:
+        [
+            DishService
+        ],
+        bootstrap:
+        [
+            AppComponent
+        ]
     })
 export class AppModule
 {
