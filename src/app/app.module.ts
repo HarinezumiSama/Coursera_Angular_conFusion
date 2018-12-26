@@ -11,25 +11,34 @@ import { MatButtonModule } from '@angular/material/button';
 import 'hammerjs';
 
 import { AppComponent } from './components/root/root.component';
-import { MenuComponent } from './components/menu/menu.component';;
-import { DishdetailComponent } from './components/dishdetail/dishdetail.component';
 
 import { NumberToArrayPipe } from './pipes/number-to-array.pipe';
 
-import { DishService } from './services/dish.service';;
+import { MenuComponent } from './components/menu/menu.component';;
+import { DishdetailComponent } from './components/dishdetail/dishdetail.component';
 import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component'
+import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component';
+
+import { DishService } from './services/dish.service';;
+
+import { AppRoutingModule } from './modules/app-routing/app-routing.module';
 
 @NgModule(
     {
         declarations:
         [
             AppComponent,
+            NumberToArrayPipe,
             MenuComponent,
             DishdetailComponent,
-            NumberToArrayPipe,
             HeaderComponent,
-            FooterComponent
+            FooterComponent,
+            HomeComponent,
+            AboutComponent,
+            ContactComponent
         ],
         imports:
         [
@@ -40,7 +49,8 @@ import { FooterComponent } from './components/footer/footer.component'
             MatListModule,
             MatGridListModule,
             MatCardModule,
-            MatButtonModule
+            MatButtonModule,
+            AppRoutingModule
         ],
         providers:
         [
