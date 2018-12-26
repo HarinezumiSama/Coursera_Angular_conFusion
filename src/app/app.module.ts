@@ -10,13 +10,15 @@ import { MatButtonModule } from '@angular/material/button';
 
 import 'hammerjs';
 
-import { AppComponent } from './app.component';
-import { MenuComponent } from './menu/menu.component';;
-import { DishdetailComponent } from './dishdetail/dishdetail.component';
+import { AppComponent } from './components/root/root.component';
+import { MenuComponent } from './components/menu/menu.component';;
+import { DishdetailComponent } from './components/dishdetail/dishdetail.component';
 
 import { NumberToArrayPipe } from './pipes/number-to-array.pipe';
 
-import { DishService } from './services/dish.service';
+import { DishService } from './services/dish.service';;
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component'
 
 @NgModule(
     {
@@ -25,7 +27,9 @@ import { DishService } from './services/dish.service';
             AppComponent,
             MenuComponent,
             DishdetailComponent,
-            NumberToArrayPipe
+            NumberToArrayPipe,
+            HeaderComponent,
+            FooterComponent
         ],
         imports:
         [
