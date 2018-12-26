@@ -17,15 +17,15 @@
             <mat-card-content>
                 <p>{{ dish.description }}</p>
             </mat-card-content>
-            <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
+            <mat-card-actions fxLayout="row" fxLayoutGap="10px">
+                <button mat-flat-button>LIKE</button>
+                <button mat-flat-button>SHARE</button>
             </mat-card-actions>
         </mat-card>
     </div>
 
     <div fxFlex="40" fxLayout="column">
-        <mat-card *ngIf="dish">
+        <mat-card>
             <mat-card-header>
                 <mat-card-title>
                     <h3>Comments</h3>

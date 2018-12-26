@@ -1,4 +1,6 @@
-﻿export class Dish
+﻿import { Comment } from './comment';
+
+export class Dish
 {
     public id: string;
     public name: string;
@@ -8,4 +10,5 @@
     public label: string;
     public price: string;
     public description: string;
+    public comments: Comment[];
 }
