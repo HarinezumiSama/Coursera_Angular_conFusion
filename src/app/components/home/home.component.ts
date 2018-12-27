@@ -2,7 +2,9 @@
 import { Dish } from '../../shared/dish';
 import { DishService } from '../../services/dish.service';
 import { Promotion } from '../../shared/promotion';
+import { Leader } from '../../shared/leader';
 import { PromotionService } from '../../services/promotion.service';
+import { LeaderService } from '../../services/leader.service';
 
 @Component(
     {
@@ -14,10 +16,12 @@ export class HomeComponent implements OnInit
 {
     public dish: Dish;
     public promotion: Promotion;
+    public leader: Leader;
 
     constructor(
         private readonly dishService: DishService,
-        private readonly promotionService: PromotionService)
+        private readonly promotionService: PromotionService,
+        private readonly leaderService: LeaderService)
     {
     }
 
@@ -25,5 +29,6 @@ export class HomeComponent implements OnInit
     {
         this.dish = this.dishService.getFeaturedDish();
         this.promotion = this.promotionService.getFeaturedPromotion();
+        this.leader = this.leaderService.getFeaturedLeader();
     }
 }

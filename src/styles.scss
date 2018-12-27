@@ -21,6 +21,17 @@ $divider-color: #BDBDBD;
     padding: $pad-up-down $pad-left-right;
 }
 
+.mat-list .mat-list-item
+{
+    height: initial !important;
+}
+
+.mat-list .mat-list-item .mat-line
+{
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
 body
 {
     padding: 0;
