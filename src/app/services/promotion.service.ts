@@ -8,18 +8,18 @@ import { PROMOTIONS } from '../shared/promotions';
     })
 export class PromotionService
 {
-    public getPromotions(): Promotion[]
+    public getPromotions(): Promise<Promotion[]>
     {
-        return PROMOTIONS;
+        return Promise.resolve(PROMOTIONS);
     }
 
-    public getPromotion(id: string): Promotion
+    public getPromotion(id: string): Promise<Promotion>
     {
-        return PROMOTIONS.filter((promo) => (promo.id === id))[0];
+        return Promise.resolve(PROMOTIONS.filter((promo) => (promo.id === id))[0]);
     }
 
-    public getFeaturedPromotion(): Promotion
+    public getFeaturedPromotion(): Promise<Promotion>
     {
-        return PROMOTIONS.filter((promotion) => promotion.featured)[0];
+        return Promise.resolve(PROMOTIONS.filter((promotion) => promotion.featured)[0]);
     }
 }

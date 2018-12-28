@@ -8,13 +8,13 @@ import { LEADERS } from '../shared/leaders';
     })
 export class LeaderService
 {
-    public getLeaders(): Leader[]
+    public getLeaders(): Promise<Leader[]>
     {
-        return LEADERS;
+        return Promise.resolve(LEADERS);
     }
 
-    public getFeaturedLeader(): Leader
+    public getFeaturedLeader(): Promise<Leader>
     {
-        return this.getLeaders().filter(leader => leader.featured)[0];
+        return this.getLeaders().then(value => value.filter(leader => leader.featured)[0]);
     }
 }
