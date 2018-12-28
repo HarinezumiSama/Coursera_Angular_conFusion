@@ -1,6 +1,7 @@
 ﻿import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
@@ -37,7 +38,8 @@ import { LeaderService } from './services/leader.service';
 
 import { AppRoutingModule } from './modules/app-routing/app-routing.module';
 
-@NgModule(
+@
+NgModule(
     {
         declarations:
         [
@@ -56,6 +58,7 @@ import { AppRoutingModule } from './modules/app-routing/app-routing.module';
         [
             BrowserModule,
             BrowserAnimationsModule,
+            MatProgressSpinnerModule,
             FlexLayoutModule,
             MatToolbarModule,
             MatListModule,
