@@ -1,6 +1,6 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Feedback, ContactTypes } from '../../shared/feedback';
+import { Feedback, CONTACT_TYPES } from '../../shared/feedback';
 
 @Component(
     {
@@ -12,7 +12,10 @@ export class ContactComponent implements OnInit
 {
     public feedbackForm: FormGroup;
     public feedback: Feedback;
-    public contactTypes = ContactTypes;
+    public contactTypes = CONTACT_TYPES;
+
+    @ViewChild('fform')
+    public feedbackFormDirective;
 
     constructor(private readonly formBuilder: FormBuilder)
     {
@@ -27,10 +30,10 @@ export class ContactComponent implements OnInit
     {
         this.feedbackForm = this.formBuilder.group(
             {
-                firstName: '',
-                lastName: '',
-                telNum: 0,
-                email: '',
+                firstName: ['', Validators.required],
+                lastName: ['', Validators.required],
+                telNum: ['', Validators.required],
+                email: ['', Validators.required],
                 agree: false,
                 contactType: 'None',
                 message: ''
@@ -41,6 +44,18 @@ export class ContactComponent implements OnInit
     {
         this.feedback = this.feedbackForm.value;
         console.log(this.feedback);
-        this.feedbackForm.reset();
+
+        this.feedbackForm.reset(
+            {
+                firstName: '',
+                lastName: '',
+                telNum: '',
+                email: '',
+                agree: false,
+                contactType: 'None',
+                message: ''
+            });
+
+        this.feedbackFormDirective.resetForm();
     }
 }
