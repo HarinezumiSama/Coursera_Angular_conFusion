@@ -12,7 +12,7 @@ export class DishService
 {
     public getDishes(): Observable<Dish[]>
     {
-        return of(DISHES).pipe(delay(2000));
+        return of(DISHES).pipe(delay(200));
     }
 
     public getDish(id: string): Observable<Dish>

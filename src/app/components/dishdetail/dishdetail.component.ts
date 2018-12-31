@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { Params, ActivatedRoute } from '@angular/router';
+import { ParamMap, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { DishService } from '../../services/dish.service';
 import { Dish } from '../../shared/dish';
@@ -29,8 +29,8 @@ export class DishdetailComponent implements OnInit
     {
         this.dishService.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
 
-        this.route.params
-            .pipe(switchMap(params => this.dishService.getDish(params['id'])))
+        this.route.paramMap
+            .pipe(switchMap((params: ParamMap) => this.dishService.getDish(params.get('id'))))
             .subscribe(
                 dish =>
                 {
