@@ -83,7 +83,7 @@ export class ContactComponent implements OnInit
                         Validators.maxLength(ContactComponent.maxNameLength)
                     ]
                 ],
-                telNum: ['', [Validators.required, Validators.pattern]],
+                telNum: ['', [Validators.required, Validators.pattern('[0-9]*')]],
                 email: ['', [Validators.required, Validators.email]],
                 agree: false,
                 contactType: 'None',
