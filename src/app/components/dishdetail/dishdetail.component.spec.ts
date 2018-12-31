@@ -1,13 +1,13 @@
 ﻿import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DishdetailComponent } from './dishdetail.component';
+import { DishDetailComponent } from './dishdetail.component';
 
 describe(
-    'DishdetailComponent',
+    'DishDetailComponent',
     () =>
     {
-        let component: DishdetailComponent;
-        let fixture: ComponentFixture<DishdetailComponent>;
+        let component: DishDetailComponent;
+        let fixture: ComponentFixture<DishDetailComponent>;
 
         beforeEach(
             async(
@@ -15,7 +15,7 @@ describe(
                 {
                     TestBed.configureTestingModule(
                             {
-                                declarations: [DishdetailComponent]
+                                declarations: [DishDetailComponent]
                             })
                         .compileComponents();
                 }));
@@ -23,7 +23,7 @@ describe(
         beforeEach(
             () =>
             {
-                fixture = TestBed.createComponent(DishdetailComponent);
+                fixture = TestBed.createComponent(DishDetailComponent);
                 component = fixture.componentInstance;
                 fixture.detectChanges();
             });

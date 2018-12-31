@@ -10,8 +10,8 @@ import { Feedback, CONTACT_TYPES } from '../../shared/feedback';
     })
 export class ContactComponent implements OnInit
 {
-    private static minNameLength = 2;
-    private static maxNameLength = 40;
+    private static readonly minNameLength = 2;
+    private static readonly maxNameLength = 40;
 
     public feedbackForm: FormGroup;
     public feedback: Feedback;
@@ -20,7 +20,7 @@ export class ContactComponent implements OnInit
     @ViewChild('fform')
     public feedbackFormDirective;
 
-    private formErrors =
+    private readonly formErrors =
     {
         'firstName': '',
         'lastName': '',
@@ -28,7 +28,7 @@ export class ContactComponent implements OnInit
         'email': ''
     };
 
-    private validationMessages =
+    private readonly validationMessages =
     {
         'firstName':
         {
@@ -121,8 +121,6 @@ export class ContactComponent implements OnInit
             return;
         }
 
-        const form = this.feedbackForm;
-
         for (const field in this.formErrors)
         {
             if (!this.formErrors.hasOwnProperty(field))
@@ -132,7 +130,7 @@ export class ContactComponent implements OnInit
 
             this.formErrors[field] = '';
 
-            const control = form.get(field);
+            const control = this.feedbackForm.get(field);
             if (control == null || !control.dirty || !control.invalid)
             {
                 continue;

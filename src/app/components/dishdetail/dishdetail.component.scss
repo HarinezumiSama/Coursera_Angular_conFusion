@@ -5,3 +5,20 @@
     height: 16px;
     background-image: url(../../../assets/images/star.png);
 }
+
+.full-width
+{
+    width: 95%
+}
+
+.comment-preview
+{
+    background-color: aliceblue;
+}
+
+.comment-preview::before
+{
+    content: 'Preview';
+    background-color: lightyellow;
+    border: 1px dotted red;
+}

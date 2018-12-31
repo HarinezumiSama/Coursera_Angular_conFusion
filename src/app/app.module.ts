@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSliderModule } from '@angular/material/slider';
 
 import 'hammerjs';
 
@@ -24,7 +25,7 @@ import { AppComponent } from './components/root/root.component';
 import { NumberToArrayPipe } from './pipes/number-to-array.pipe';
 
 import { MenuComponent } from './components/menu/menu.component';
-import { DishdetailComponent } from './components/dishdetail/dishdetail.component';
+import { DishDetailComponent } from './components/dishdetail/dishdetail.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
@@ -46,7 +47,7 @@ NgModule(
             AppComponent,
             NumberToArrayPipe,
             MenuComponent,
-            DishdetailComponent,
+            DishDetailComponent,
             HeaderComponent,
             FooterComponent,
             HomeComponent,
@@ -73,7 +74,8 @@ NgModule(
             FormsModule,
             ReactiveFormsModule,
             MatSelectModule,
-            MatSlideToggleModule
+            MatSlideToggleModule,
+            MatSliderModule
         ],
         providers:
         [

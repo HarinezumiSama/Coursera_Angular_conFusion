@@ -39,17 +39,51 @@
                 </mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                <mat-list fxLayout="column" fxLayoutGap="30px">
-                    <mat-list-item *ngFor="let commentItem of dish.comments">
-                        <mat-list>
-                            <div>{{ commentItem.comment }}</div>
-                            <div>
-                                <div class="star" *ngFor="let item of (commentItem.rating | numberToArray )"></div>
-                            </div>
-                            <div>-- {{ commentItem.author }} on {{ commentItem.date | date:'EEEE, dd MMMM yyyy' }}</div>
-                        </mat-list>
+                <mat-list fxLayout="column" fxLayoutGap="10px">
+                    <mat-list-item *ngFor="let commentItem of this.getCommentsIncludingPreview()">
+                        <div [ngClass]="getCommentClass(commentItem)">
+                            <mat-list>
+                                <mat-list-item>{{ commentItem.comment }}</mat-list-item>
+                                <mat-list-item>
+                                    <div class="star" *ngFor="let item of (commentItem.rating | numberToArray )"></div>
+                                </mat-list-item>
+                                <mat-list-item>
+                                    -- {{ commentItem.author }}<span [hidden]="isPreviewComment(commentItem)">&nbsp;on&nbsp;<i>{{ commentItem.date | date:'EEEE, dd MMMM yyyy' }}</i></span>
+                                </mat-list-item>
+                            </mat-list>
+                        </div>
                     </mat-list-item>
                 </mat-list>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>
+                    <h3>Leave a Comment</h3>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="full-width">
+                    <form novalidate [formGroup]="commentForm" (ngSubmit)="onSubmit()" class="full-width">
+                        <div class="full-width">
+                            <mat-form-field class="full-width">
+                                <input formControlName="author" matInput placeholder="Name" type="text" required>
+                                <mat-error *ngIf="formErrors.author">{{formErrors.author}}</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="full-width">
+                            <mat-slider matInput formControlName="rating" min="1" max="5" step="1" tickInterval="1" thumbLabel></mat-slider>
+                        </div>
+                        <div class="full-width">
+                            <mat-form-field class="full-width">
+                                <textarea formControlName="comment" matInput placeholder="Comment" rows="10" required></textarea>
+                                <mat-error *ngIf="formErrors.comment">{{formErrors.comment}}</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="commentForm.invalid">Submit</button>
+                    </form>
+                </div>
             </mat-card-content>
         </mat-card>
     </div>
