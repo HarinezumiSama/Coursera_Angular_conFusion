@@ -12,11 +12,11 @@ export class LeaderService
 {
     public getLeaders(): Observable<Leader[]>
     {
-        return of(LEADERS).pipe(delay(2000));
+        return of(LEADERS).pipe(delay(200));
     }
 
     public getFeaturedLeader(): Observable<Leader>
     {
-        return of(LEADERS.filter(leader => leader.featured)[0]).pipe(delay(2000));
+        return of(LEADERS.filter(leader => leader.featured)[0]).pipe(delay(200));
     }
 }
