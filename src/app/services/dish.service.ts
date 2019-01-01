@@ -1,8 +1,8 @@
-﻿import { Injectable } from '@angular/core';
+﻿import { Inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Dish } from '../shared/dish';
-import { DISHES } from '../shared/dishes';
 import { Observable, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Injectable(
     {
@@ -10,23 +10,32 @@ import { delay } from 'rxjs/operators';
     })
 export class DishService
 {
+    constructor(@Inject('BaseUrl') private readonly baseUrl, private readonly http: HttpClient)
+    {
+    }
+
     public getDishes(): Observable<Dish[]>
     {
-        return of(DISHES).pipe(delay(200));
+        return this.http.get<Dish[]>(`${this.baseUrl}/dishes`);
     }
 
     public getDish(id: string): Observable<Dish>
     {
-        return of(DISHES.filter(dish => dish.id === id)[0]).pipe(delay(200));
+        return this.http.get<Dish>(`${this.baseUrl}/dishes/${id}`);
     }
 
     public getFeaturedDish(): Observable<Dish>
     {
-        return of(DISHES.filter(dish => dish.featured)[0]).pipe(delay(200));
+        return this.http.get<Dish[]>(`${this.baseUrl}/dishes?featured=true`).pipe(map(dishes => dishes[0]));
     }
 
     public getDishIds(): Observable<string[] | any>
     {
-        return of(DISHES.map(dish => dish.id));
+        return this.getDishes().pipe(map(dishes => dishes.map(dish => dish.id)));
+    }
+
+    public getDishImageUrl(dish: Dish)
+    {
+        return `${this.baseUrl}/${dish.image}`;
     }
 }

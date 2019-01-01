@@ -1,6 +1,7 @@
-﻿import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+﻿import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -39,8 +40,9 @@ import { LeaderService } from './services/leader.service';
 
 import { AppRoutingModule } from './modules/app-routing/app-routing.module';
 
-@
-NgModule(
+import { BASE_URL } from './shared/baseurl';
+
+@NgModule(
     {
         declarations:
         [
@@ -59,6 +61,7 @@ NgModule(
         [
             BrowserModule,
             BrowserAnimationsModule,
+            HttpClientModule,
             MatProgressSpinnerModule,
             FlexLayoutModule,
             MatToolbarModule,
@@ -79,6 +82,7 @@ NgModule(
         ],
         providers:
         [
+            { provide: 'BaseUrl', useValue: BASE_URL },
             DishService,
             PromotionService,
             LeaderService
