@@ -88,7 +88,12 @@
         </mat-card>
     </div>
 
-    <div [hidden]="dish" fxFlex="100">
+    <div [hidden]="dish || errorMessage" fxFlex="100">
         <mat-spinner></mat-spinner><h4>Loading selected dish...</h4>
+    </div>
+
+    <div fxFlex *ngIf="errorMessage" class="error">
+        <h2 class="errorHeader">Error</h2>
+        <h4>{{ errorMessage }}</h4>
     </div>
 </div>

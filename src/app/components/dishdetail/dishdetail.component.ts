@@ -27,6 +27,8 @@ export class DishDetailComponent implements OnInit
     public next: string;
     public commentForm: FormGroup;
 
+    public errorMessage: string;
+
     private readonly formErrors =
     {
         'author': '',
@@ -66,9 +68,11 @@ export class DishDetailComponent implements OnInit
             .subscribe(
                 dish =>
                 {
+                    this.errorMessage = null;
                     this.dish = dish;
                     this.setPreviousAndNext(dish.id);
-                });
+                },
+                error => this.errorMessage = error);
     }
 
     public goBack(): void

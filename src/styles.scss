@@ -64,3 +64,17 @@ body
 {
     flex: 1 1 auto;
 }
+
+.error
+{
+    background-color: lightyellow;
+    border-style: dashed;
+    border-width: 1px;
+    border-color: darkblue;
+    padding: 5px;
+}
+
+.errorHeader
+{
+    color: maroon;
+}
