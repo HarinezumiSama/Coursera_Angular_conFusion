@@ -22,6 +22,7 @@ export class DishDetailComponent implements OnInit
     private static readonly defaultStarCount = DishDetailComponent.maxStarCount;
 
     public dish: Dish;
+    public dishCopy: Dish;
     public dishIds: string[];
     public previous: string;
     public next: string;
@@ -70,6 +71,7 @@ export class DishDetailComponent implements OnInit
                 {
                     this.errorMessage = null;
                     this.dish = dish;
+                    this.dishCopy = dish;
                     this.setPreviousAndNext(dish.id);
                 },
                 error => this.errorMessage = error);
@@ -115,10 +117,25 @@ export class DishDetailComponent implements OnInit
 
         const newComment = this.commentForm.value as Comment;
         newComment.date = new Date().toISOString();
-        console.log(newComment);
-        this.dish.comments.push(newComment);
+        ////console.log(newComment);
 
+        this.dishCopy.comments.push(newComment);
         this.previewedComment = null;
+
+        this.dishService
+            .putDish(this.dishCopy)
+            .subscribe(
+                dish =>
+                {
+                    this.dish = dish;
+                    this.dishCopy = dish;
+                },
+                error =>
+                {
+                    this.dish = null;
+                    this.dishCopy = null;
+                    this.errorMessage = error;
+                });
 
         this.commentForm.reset(
             {
